@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>radleta@gmail.com</authors>
+    <owners>radleta@gmail.com</owners>
+    <projectUrl>https://github.com/radleta/SqsWorker</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The command line bridge between Elastic Beanstalk IIS web server and SQS Queue.</description>
+    <tags></tags>
+  </metadata>
+</package>

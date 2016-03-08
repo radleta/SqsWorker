@@ -1,0 +1,1 @@
+msbuild.exe ./SqsWorker/SqsWorker.csproj
