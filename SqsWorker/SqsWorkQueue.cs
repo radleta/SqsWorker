@@ -36,6 +36,18 @@ namespace SqsWorker
 
             this._options = options;
 
+            if (options.AttributeNames != null
+                && options.AttributeNames.Length > 0)
+            {
+                this._optionsAttributeNames = options.AttributeNames.ToList();
+            }
+
+            if (options.MessageAttributeNames != null
+                && options.MessageAttributeNames.Length > 0)
+            {
+                this._optionsMessageAttributeNames = options.MessageAttributeNames.ToList();
+            }
+
             // perform the deletes in batches of 10
             this._deleteMessageCargo = new Cargo<Amazon.SQS.Model.Message>(this.DeleteMessageBatch, 10);
         }
@@ -44,6 +56,16 @@ namespace SqsWorker
         /// The options.
         /// </summary>
         private readonly Options _options;
+
+        /// <summary>
+        /// The attribute names to request with each message.
+        /// </summary>
+        private readonly List<string> _optionsAttributeNames;
+
+        /// <summary>
+        /// The message attribute names to request with each message.
+        /// </summary>
+        private readonly List<string> _optionsMessageAttributeNames;
 
         /// <summary>
         /// The cargo to transmit the queue status updates in batch.
@@ -113,6 +135,8 @@ namespace SqsWorker
                 {
                     QueueUrl = _options.QueueUrl,
                     MaxNumberOfMessages = 10,
+                    MessageAttributeNames = this._optionsMessageAttributeNames,
+                    AttributeNames = this._optionsAttributeNames,
                 });
 
                 Interlocked.Add(ref _readTotal, response.Messages.Count);

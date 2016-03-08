@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>$id$</id>
+    <id>SqsWorker</id>
     <version>$version$</version>
     <authors>radleta@gmail.com</authors>
     <owners>radleta@gmail.com</owners>
@@ -9,5 +9,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The command line bridge between Elastic Beanstalk IIS web server and SQS Queue.</description>
     <tags></tags>
+    <dependencies></dependencies>
   </metadata>
+  <files>
+    <file src="ebextensions\**\*.*" target="content\.ebextensions" />
+    <file src="ebinit\**\*.*" target="content\.ebinit" />
+    <file src="bin\$Configuration$\**\*.*" target="content\tools\SqsWorker" />
+  </files>
 </package>

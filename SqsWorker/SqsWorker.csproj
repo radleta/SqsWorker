@@ -77,6 +77,9 @@
     <Compile Include="WorkQueue.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ebextensions\SqsWorker.config" />
+    <None Include="ebinit\SqsWorker\RegisterScheduled.ps1" />
+    <None Include="ebinit\SqsWorker\UnregisterScheduled.ps1" />
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\VersionInfo.base.cs" />
@@ -87,6 +90,7 @@
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.SQS.3.1.0.6\analyzers\dotnet\cs\AWSSDK.SQS.CodeAnalysis.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <UsingTask TaskName="GitVersionFile" AssemblyFile="..\ThirdPartyDependencies\Versioning\MSBuildVersioning.dll" />
   <Target Name="BeforeBuild">
@@ -104,6 +108,6 @@
     <RemoveDir Directories="$(PackageDir)" />
     <MakeDir Directories="$(PackageDir)" />
     <!-- Package the project -->
-    <Exec WorkingDirectory="$(BuildDir)" Command="NuGet.exe pack -Symbols -OutputDir &quot;$(PackageDir)&quot; -Version %(OutputAssemblyInfo.Version)" />
+    <Exec WorkingDirectory="$(BuildDir)" Command="NuGet.exe pack SqsWorker.nuspec -OutputDir &quot;$(PackageDir)&quot; -Version %(OutputAssemblyInfo.Version) -Properties Configuration=$(Configuration)" />
   </Target>
 </Project>

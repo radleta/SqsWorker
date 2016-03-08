@@ -1,0 +1,1 @@
+﻿unregister-scheduledtask -taskName 'SqsWorker' -confirm:$false
